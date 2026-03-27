@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>unwritten</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="custom-cursor" id="custom-cursor"></div>
+
+  <header class="site-header">
+    <div class="header-container container">
+      <a href="#" class="logo">unwritten</a>
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#our-story">Our Story</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <h1 class="hero-headline">Grace Looks Good On You</h1>
+        <p class="hero-subheadline">Handcrafted slow fashion for the intentional woman</p>
+        <p class="hero-tagline">Unwritten, but not untold.</p>
+        <a href="#gallery" class="hero-btn">View the Lookbook</a>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery-section fade-in-up">
+      <div class="container">
+        <h2 class="gallery-title">From the Studio to the Field</h2>
+        <div class="gallery-filters">
+          <button class="gallery-filter is-active" data-filter="all">All</button>
+          <button class="gallery-filter" data-filter="collection">Collection</button>
+          <button class="gallery-filter" data-filter="process">The Process</button>
+        </div>
+        <div class="gallery-grid" id="gallery-grid">
+          <!-- Gallery images injected by JS -->
+        </div>
+        <div class="gallery-load-more-wrapper">
+          <button class="gallery-load-more" id="gallery-load-more">Load More</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="process-section fade-in-up">
+      <div class="container">
+        <h2 class="process-title">The Art of the Stitch</h2>
+        <div class="process-grid">
+          <div class="process-tile parallax-zoom">
+            <img src="assets/Images/studio/264E8922-2CC6-4B0A-88E6-A5E4BE482373_4_5005_c.jpeg" alt="Technical drawings and CAD patterns for garment design" loading="lazy">
+            <div class="process-tile-overlay">Proficient in Adobe Illustrator technical drawings</div>
+            <p class="process-tile-caption">Technical Drawings &amp; CAD Patterns</p>
+          </div>
+          <div class="process-tile parallax-zoom">
+            <img src="assets/Images/studio/3F3EFC85-EA2D-401E-8A76-18DEE9DA0E98_4_5005_c.jpeg" alt="Garment construction and fabric preparation" loading="lazy">
+            <div class="process-tile-overlay">Hands-on pattern drafting, garment construction &amp; sewing</div>
+            <p class="process-tile-caption">Garment Construction &amp; Fabric Preparation</p>
+          </div>
+          <div class="process-tile parallax-zoom">
+            <img src="assets/Images/studio/F4D270D0-15A4-43C9-AD66-2E8416A6D8D8_1_105_c.jpeg" alt="Photography and photoshoot execution" loading="lazy">
+            <div class="process-tile-overlay">Planning &amp; directing photoshoots from concept to final image</div>
+            <p class="process-tile-caption">Photography &amp; Photoshoot Execution</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="our-story" class="brand-story-section fade-in-up">
+      <div class="container">
+        <h2 class="brand-story-title">More Than Just a Brand</h2>
+        <div class="brand-story-text">
+          <p>Founded by Nicole Venter, a graduate with a Diploma in Fashion Design from Elizabeth Galloway, unwritten is a celebration of slow fashion and intentional design born from the heart of South Africa.</p>
+          <p>Every piece begins as a quiet idea — a sketch on paper, a drape of linen, a conversation between maker and material. Our garments are handcrafted by local artisans who pour generations of skill into every stitch, honouring a tradition of quality that refuses to be rushed.</p>
+          <p>Our mission is empowering individuals to break free from limitations and forge their own path. We believe clothing should carry a story: of the hands that shaped it, the fabrics chosen with care, and the woman who wears it with grace. This is fashion without compromise — thoughtful, timeless, and unmistakably yours.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills-section fade-in-up">
+      <div class="container">
+        <h2 class="skills-title">Technical Proficiency</h2>
+        <div class="skills-grid">
+          <div class="skill-badge">Adobe Illustrator</div>
+          <div class="skill-badge">Adobe InDesign</div>
+          <div class="skill-badge">Adobe Photoshop</div>
+          <div class="skill-badge">Pattern Drafting</div>
+          <div class="skill-badge">Garment Construction</div>
+          <div class="skill-badge">Fashion Illustration</div>
+          <div class="skill-badge">Technical Drawing</div>
+          <div class="skill-badge">Fabric Preparation</div>
+          <div class="skill-badge">Photoshoot Direction</div>
+        </div>
+        <div class="portfolio-download">
+          <a href="assets/Nicole_Venter_Portfolio.pdf" class="portfolio-btn" target="_blank" rel="noopener noreferrer">Download Full Portfolio</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-newsletter">
+        <h2 class="footer-newsletter-title">Join the Journey</h2>
+        <form class="newsletter-form" aria-label="Newsletter signup">
+          <div class="newsletter-form-group">
+            <input type="email" class="newsletter-input" placeholder="Your email address" aria-label="Email address" required>
+            <button type="submit" class="newsletter-submit">Subscribe</button>
+          </div>
+          <p class="newsletter-message" aria-live="polite"></p>
+        </form>
+      </div>
+      <div class="footer-contact">
+        <p class="footer-contact-item"><a href="mailto:nicoleurianne@gmail.com">nicoleurianne@gmail.com</a></p>
+        <p class="footer-contact-item"><a href="tel:+27762251600">+27 76 225 1600</a></p>
+      </div>
+      <div class="footer-instagram">
+        <h3 class="horizontal-gallery-title">Follow Our Journey</h3>
+        <div class="horizontal-scroll-wrapper" id="horizontal-scroll">
+          <div class="horizontal-scroll-track">
+            <div class="horizontal-scroll-item">
+              <img src="assets/Images/lookbook/A08EF800-67CC-4FC4-AB36-AB502D3A9B3E_1_105_c.jpeg" alt="Lifestyle lookbook shot from unwritten" loading="lazy">
+            </div>
+            <div class="horizontal-scroll-item">
+              <img src="assets/Images/lookbook/BF2FCB71-2A21-46A4-8D5B-47D003B1C3A6.jpeg" alt="Model in handcrafted garment by unwritten" loading="lazy">
+            </div>
+            <div class="horizontal-scroll-item">
+              <img src="assets/Images/lookbook/E4B41311-3695-4512-98A1-C2BD1B7DC601_1_105_c.jpeg" alt="Field photoshoot from unwritten collection" loading="lazy">
+            </div>
+            <div class="horizontal-scroll-item">
+              <img src="assets/Images/lookbook/F3AEF5FC-2C47-4CEB-BB13-78E687C6FBC0.jpeg" alt="Lifestyle portrait from unwritten lookbook" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-skills">
+        <p class="footer-skills-text">Adobe Illustrator | Pattern Drafting | Garment Construction</p>
+        <p class="footer-credentials">Diploma in Fashion Design — Elizabeth Galloway (2023–2025)</p>
+        <div class="footer-skills-contact">
+          <a href="mailto:nicoleurianne@gmail.com">Nicoleurianne@gmail.com</a> | <a href="tel:+27762251600">+27 76 225 1600</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

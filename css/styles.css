@@ -1,0 +1,1664 @@
+/* ========================================
+   Design Tokens (CSS Custom Properties)
+   ======================================== */
+
+:root {
+  /* Colors */
+  --color-bone: #F9F8F4;
+  --color-sage: #98A68E;
+  --color-rose: #DCAE96;
+  --color-charcoal: #2C2C2C;
+
+  /* Typography */
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', 'Montserrat', sans-serif;
+
+  /* Spacing */
+  --section-padding: 100px;
+  --grid-gap: 24px;
+
+  /* Transitions */
+  --transition-hover: 300ms ease;
+}
+
+/* ========================================
+   Global Base Styles
+   ======================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bone);
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  margin: 0;
+}
+
+/* ========================================
+   Shipping Bar
+   ======================================== */
+
+.shipping-bar {
+  background-color: var(--color-bone);
+  color: var(--color-charcoal);
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  padding: 10px var(--grid-gap);
+  line-height: 1.4;
+}
+
+/* ========================================
+   Container Utility
+   ======================================== */
+
+.container {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--grid-gap);
+  padding-right: var(--grid-gap);
+}
+
+/* ========================================
+   Header
+   ======================================== */
+
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: transparent;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 24px;
+  padding-bottom: 16px;
+  gap: 12px;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 32px;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  position: relative;
+  transition: color var(--transition-hover);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #ffffff;
+  transition: width var(--transition-hover);
+}
+
+.nav-links a:hover {
+  color: var(--color-rose);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+  background-color: var(--color-rose);
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #3a3f35;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(44, 44, 44, 0.55) 0%,
+    rgba(58, 63, 53, 0.45) 50%,
+    rgba(44, 44, 44, 0.55) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 var(--grid-gap);
+  max-width: 800px;
+}
+
+.hero-headline {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  font-weight: 300;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.hero-subheadline {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.06em;
+  margin: 0 0 16px;
+}
+
+.hero-tagline {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+/* Hero responsive — see consolidated 768px breakpoint below */
+
+/* ========================================
+   Hero Button
+   ======================================== */
+
+.hero-btn {
+  display: inline-block;
+  margin-top: 32px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 14px 36px;
+  text-decoration: none;
+  transition: background-color var(--transition-hover), border-color var(--transition-hover);
+}
+
+.hero-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+}
+
+/* ========================================
+   Gallery Section (Masonry Grid with Categories)
+   ======================================== */
+
+.gallery-section {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+.gallery-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-bottom: 32px;
+}
+
+.gallery-filters {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.gallery-filter {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+  background: none;
+  border: 1px solid transparent;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: border-color var(--transition-hover), color var(--transition-hover);
+}
+
+.gallery-filter:hover {
+  border-color: var(--color-sage);
+  color: var(--color-sage);
+}
+
+.gallery-filter.is-active {
+  border-color: var(--color-charcoal);
+  color: var(--color-charcoal);
+}
+
+.gallery-grid {
+  columns: 3;
+  column-gap: var(--grid-gap);
+  overflow-anchor: none;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  break-inside: avoid;
+  margin-bottom: var(--grid-gap);
+  aspect-ratio: 3 / 4;
+  background-color: #E5E7EB;
+  background-image: linear-gradient(90deg, #E5E7EB 25%, #F0F1F3 50%, #E5E7EB 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.gallery-item.is-loaded {
+  background-image: none;
+  background-color: transparent;
+  animation: none;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-hover);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.gallery-item.is-loaded img {
+  animation: gallery-stagger-in 0.4s ease forwards;
+}
+
+@keyframes gallery-stagger-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gallery-item:hover img {
+  transform: scale(1.03);
+}
+
+.gallery-caption {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(44, 44, 44, 0.6);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity var(--transition-hover);
+  pointer-events: none;
+}
+
+.gallery-item:hover .gallery-caption {
+  opacity: 1;
+}
+
+.gallery-load-more-wrapper {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.gallery-load-more {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+  background: none;
+  border: 1px solid var(--color-charcoal);
+  padding: 14px 40px;
+  cursor: pointer;
+  transition: background-color var(--transition-hover), color var(--transition-hover);
+}
+
+.gallery-load-more:hover {
+  background-color: var(--color-charcoal);
+  color: #ffffff;
+}
+
+.gallery-load-more.is-hidden {
+  display: none;
+}
+
+/* ========================================
+   Coming Soon / Pre-Launch Section
+   ======================================== */
+
+.coming-soon-section {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+  text-align: center;
+}
+
+.coming-soon-content {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.coming-soon-headline {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+}
+
+.coming-soon-body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--color-charcoal);
+  margin: 0 0 40px;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-number {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--color-charcoal);
+  line-height: 1;
+}
+
+.countdown-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-sage);
+  margin-top: 8px;
+}
+
+.coming-soon-form-group {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.coming-soon-input {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 16px 20px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 0;
+  background: #ffffff;
+  color: var(--color-charcoal);
+  outline: none;
+  min-height: 52px;
+  transition: border-color var(--transition-hover);
+}
+
+.coming-soon-input:focus {
+  border-color: var(--color-sage);
+}
+
+.coming-soon-submit {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: var(--color-sage);
+  border: none;
+  padding: 16px 32px;
+  cursor: pointer;
+  min-height: 52px;
+  white-space: nowrap;
+  transition: background-color var(--transition-hover);
+}
+
+.coming-soon-submit:hover {
+  background-color: #889e7e;
+}
+
+.coming-soon-message {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  margin: 12px 0 0;
+  min-height: 1.2em;
+}
+
+.coming-soon-message.error {
+  color: #c0392b;
+}
+
+.coming-soon-message.success {
+  color: var(--color-sage);
+}
+
+/* ========================================
+   Shop Page — Coming Soon
+   ======================================== */
+
+.shop-coming-soon {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 120px;
+  padding-bottom: var(--section-padding);
+  text-align: center;
+}
+
+.shop-coming-soon-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.shop-coming-soon-headline {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+}
+
+.shop-coming-soon-body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--color-charcoal);
+  margin: 0 0 32px;
+}
+
+.shop-coming-soon-tag {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--color-sage);
+  letter-spacing: 0.06em;
+  margin: 0 0 40px;
+}
+
+.shop-shipping-note {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: #888;
+  margin-top: 32px;
+  line-height: 1.6;
+}
+
+/* Solid header for shop page */
+.site-header--solid {
+  position: relative;
+  background-color: var(--color-bone);
+}
+
+.site-header--solid .logo {
+  color: var(--color-charcoal);
+}
+
+.site-header--solid .nav-links a {
+  color: var(--color-charcoal);
+}
+
+.site-header--solid .nav-links a::after {
+  background-color: var(--color-charcoal);
+}
+
+.site-header--solid .hamburger-line {
+  background-color: var(--color-charcoal);
+}
+
+.site-footer--minimal {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+/* ========================================
+   Product Grid Section
+   ======================================== */
+
+.product-grid-section {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--grid-gap);
+}
+
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ========================================
+   Product Card
+   ======================================== */
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card-image {
+  width: 100%;
+  display: block;
+  transition: transform var(--transition-hover);
+}
+
+.product-card:hover .product-card-image {
+  transform: scale(1.05);
+}
+
+.quick-add-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(152, 166, 142, 0.6);
+  opacity: 0;
+  transition: opacity var(--transition-hover);
+  pointer-events: none;
+}
+
+.product-card:hover .quick-add-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.quick-add-btn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: var(--color-sage);
+  border: none;
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: background-color var(--transition-hover);
+}
+
+.quick-add-btn:hover {
+  background-color: #889e7e;
+}
+
+.product-card-info {
+  padding: 16px 0 8px;
+}
+
+.product-card-name {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin: 0 0 4px;
+}
+
+.product-card-price {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-charcoal);
+  margin: 0;
+}
+
+/* ========================================
+   Fabric & Care Dropdown (Task 7)
+   ======================================== */
+
+.fabric-care-dropdown {
+  padding: 0 0 8px;
+}
+
+.fabric-care-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-sage);
+  padding: 6px 0;
+  position: relative;
+  transition: color var(--transition-hover);
+}
+
+.fabric-care-toggle::after {
+  content: '+';
+  display: inline-block;
+  margin-left: 6px;
+  transition: transform var(--transition-hover);
+}
+
+.fabric-care-dropdown.is-open .fabric-care-toggle::after {
+  content: '−';
+}
+
+.fabric-care-toggle:hover {
+  color: var(--color-charcoal);
+}
+
+.fabric-care-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-hover);
+}
+
+.fabric-care-dropdown.is-open .fabric-care-content {
+  max-height: 200px;
+}
+
+.fabric-care-fabric {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-charcoal);
+  margin: 8px 0 6px;
+}
+
+.fabric-care-fabric strong {
+  font-weight: 600;
+}
+
+.fabric-care-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.fabric-care-list li::before {
+  content: '·';
+  margin-right: 6px;
+  color: var(--color-sage);
+}
+
+/* ========================================
+   Process Section
+   ======================================== */
+
+.process-section {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+.process-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-bottom: 48px;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--grid-gap);
+}
+
+.process-tile {
+  position: relative;
+  overflow: hidden;
+}
+
+.process-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 3 / 4;
+  transition: transform var(--transition-hover);
+}
+
+.process-tile:hover img {
+  transform: scale(1.03);
+}
+
+.process-tile-caption {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 14px 0 0;
+  color: var(--color-charcoal);
+}
+
+/* Process Tile Hover Overlay */
+.process-tile-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  background: rgba(152, 166, 142, 0.85);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+}
+
+.process-tile:hover .process-tile-overlay {
+  opacity: 1;
+}
+
+/* Process Section responsive — see consolidated 768px breakpoint below */
+
+/* ========================================
+   Brand Story Section
+   ======================================== */
+
+.brand-story-section {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+  text-align: center;
+}
+
+.brand-story-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-bottom: 32px;
+}
+
+.brand-story-text {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.brand-story-text p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--color-charcoal);
+  margin: 0;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+.site-footer {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+/* ========================================
+   Experience Timeline
+   ======================================== */
+
+.experience-section {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+.experience-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-bottom: 48px;
+}
+
+.timeline {
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
+  padding-left: 32px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: var(--color-sage);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 48px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -32px;
+  top: 4px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--color-sage);
+  border: 3px solid var(--color-bone);
+  box-shadow: 0 0 0 1px var(--color-sage);
+}
+
+.timeline-role {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.timeline-period {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-sage);
+  margin: 0 0 12px;
+}
+
+.timeline-details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--color-charcoal);
+}
+
+.timeline-details li {
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.timeline-details li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--color-sage);
+  font-weight: 600;
+}
+
+/* ========================================
+   Skills Section (Technical Proficiency)
+   ======================================== */
+
+.skills-section {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+  text-align: center;
+}
+
+.skills-title {
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-bottom: 40px;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  max-width: 700px;
+  margin: 0 auto 48px;
+}
+
+.skill-badge {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-sage);
+  border: 1px solid var(--color-sage);
+  padding: 10px 24px;
+  transition: background-color var(--transition-hover), color var(--transition-hover);
+}
+
+.skill-badge:hover {
+  background-color: var(--color-sage);
+  color: #ffffff;
+}
+
+.portfolio-download {
+  text-align: center;
+}
+
+.portfolio-btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: var(--color-sage);
+  padding: 14px 40px;
+  text-decoration: none;
+  transition: background-color var(--transition-hover);
+}
+
+.portfolio-btn:hover {
+  background-color: #889e7e;
+}
+
+/* ========================================
+   Footer Credentials
+   ======================================== */
+
+.footer-credentials {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 300;
+  font-style: italic;
+  color: #888;
+  margin: 8px 0 12px;
+  letter-spacing: 0.04em;
+}
+
+/* --- Newsletter Signup (Task 10.2) --- */
+
+.footer-newsletter {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.footer-newsletter-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-bottom: 28px;
+}
+
+.newsletter-form-group {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.newsletter-input {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 14px 18px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 0;
+  background: #ffffff;
+  color: var(--color-charcoal);
+  outline: none;
+  min-height: 48px;
+  transition: border-color var(--transition-hover);
+}
+
+.newsletter-input:focus {
+  border-color: var(--color-sage);
+}
+
+.newsletter-submit {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: var(--color-sage);
+  border: none;
+  padding: 14px 28px;
+  cursor: pointer;
+  min-height: 48px;
+  min-width: 44px;
+  white-space: nowrap;
+  transition: background-color var(--transition-hover);
+}
+
+.newsletter-submit:hover {
+  background-color: #889e7e;
+}
+
+.newsletter-message {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  margin: 12px 0 0;
+  min-height: 1.2em;
+}
+
+.newsletter-message.error {
+  color: #c0392b;
+}
+
+.newsletter-message.success {
+  color: var(--color-sage);
+}
+
+/* --- Instagram Gallery (Task 10.3) --- */
+
+.footer-contact {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.footer-contact-item {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  margin: 6px 0;
+  color: var(--color-charcoal);
+}
+
+.footer-contact-item a {
+  color: var(--color-charcoal);
+  text-decoration: none;
+  transition: color var(--transition-hover);
+}
+
+.footer-contact-item a:hover {
+  color: var(--color-sage);
+}
+
+.footer-instagram {
+  text-align: center;
+}
+
+.instagram-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gap);
+}
+
+.instagram-gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.instagram-cta {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-sage);
+  margin: 20px 0 0;
+}
+
+/* --- Technical Skills Footer Bar --- */
+
+.footer-skills {
+  text-align: center;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(44, 44, 44, 0.1);
+}
+
+.footer-skills-text {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-sage);
+  margin: 0 0 12px;
+}
+
+.footer-skills-contact {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-charcoal);
+}
+
+.footer-skills-contact a {
+  color: var(--color-charcoal);
+  text-decoration: none;
+  transition: color var(--transition-hover);
+}
+
+.footer-skills-contact a:hover {
+  color: var(--color-sage);
+}
+
+/* ========================================
+   Mobile Menu Toggle (Task 11.2)
+   ======================================== */
+
+/* ========================================
+   Custom Cursor
+   ======================================== */
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid var(--color-charcoal);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 300ms ease, height 300ms ease, border-color 300ms ease, margin 300ms ease;
+  margin-left: -14px;
+  margin-top: -14px;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.is-expanded {
+  width: 52px;
+  height: 52px;
+  border-color: var(--color-sage);
+  margin-left: -26px;
+  margin-top: -26px;
+}
+
+body.has-custom-cursor {
+  cursor: none;
+}
+
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor input {
+  cursor: none;
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) {
+  .custom-cursor { display: none; }
+  body.has-custom-cursor { cursor: auto; }
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor input { cursor: auto; }
+}
+
+/* ========================================
+   Horizontal Scroll Gallery (Follow Our Journey)
+   ======================================== */
+
+.horizontal-gallery-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.horizontal-scroll-wrapper {
+  position: relative;
+  height: 60vh;
+  overflow: hidden;
+}
+
+.horizontal-scroll-track {
+  display: flex;
+  gap: var(--grid-gap);
+  height: 100%;
+  will-change: transform;
+}
+
+.horizontal-scroll-item {
+  flex: 0 0 40vw;
+  height: 100%;
+  overflow: hidden;
+}
+
+.horizontal-scroll-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ========================================
+   Sewing Needle SVG Animation (Shop Page)
+   ======================================== */
+
+.sewing-needle-animation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 24px auto 32px;
+  max-width: 300px;
+}
+
+.needle-svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Thread draws itself in over 8s */
+.thread-path {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: draw-thread 8s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes draw-thread {
+  0% { stroke-dashoffset: 400; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* ========================================
+   Scroll Animations
+   ======================================== */
+
+/* Fade-in-up entrance animation */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Parallax zoom on gallery/process images */
+.parallax-zoom {
+  overflow: hidden;
+}
+
+.parallax-zoom img {
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+
+/* ========================================
+   Mobile Menu Toggle
+   ======================================== */
+
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #ffffff;
+  transition: transform var(--transition-hover), opacity var(--transition-hover);
+}
+
+/* Hamburger animation when open */
+.mobile-menu-toggle.is-active .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-menu-toggle.is-active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.is-active .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ========================================
+   Responsive: Overflow Prevention (Task 11.5)
+   ======================================== */
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* ========================================
+   Responsive: 1024px Breakpoint (Task 11.1)
+   ======================================== */
+
+@media (max-width: 1024px) {
+  :root {
+    --section-padding: 80px;
+  }
+}
+
+/* ========================================
+   Responsive: 768px Breakpoint (Task 11.1)
+   ======================================== */
+
+@media (max-width: 768px) {
+  /* --- Section Padding (Task 11.4) --- */
+  :root {
+    --section-padding: 60px;
+  }
+
+  /* --- Header Mobile Layout (Task 11.2) --- */
+  .header-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(44, 44, 44, 0.95);
+    padding: 16px var(--grid-gap);
+    gap: 0;
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .nav-links li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 14px 0;
+    min-height: 44px;
+  }
+
+  /* --- Hero Mobile (Task 11.3) --- */
+  .hero {
+    min-height: 80vh;
+  }
+
+  .hero-headline {
+    font-size: 2.5rem;
+  }
+
+  .hero-subheadline {
+    font-size: 0.95rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.05rem;
+  }
+
+  /* --- Process Grid (already exists, consolidated) --- */
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* --- Timeline Mobile --- */
+  .timeline {
+    padding-left: 24px;
+  }
+
+  .timeline-marker {
+    left: -24px;
+  }
+
+  /* --- Skills Grid Mobile --- */
+  .skills-grid {
+    gap: 10px;
+  }
+
+  .skill-badge {
+    padding: 8px 16px;
+    font-size: 0.75rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .portfolio-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* --- Gallery Grid Mobile --- */
+  .gallery-grid {
+    columns: 2;
+  }
+
+  .gallery-filters {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .gallery-filter {
+    padding: 8px 14px;
+    min-height: 44px;
+  }
+
+  .gallery-load-more {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* --- Footer Mobile --- */
+  .newsletter-form-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .coming-soon-form-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .coming-soon-input {
+    border-right: 1px solid #ccc;
+  }
+
+  .hero-btn {
+    padding: 12px 28px;
+    font-size: 0.8rem;
+  }
+
+  .newsletter-input {
+    border-right: 1px solid #ccc;
+    min-height: 48px;
+  }
+
+  .newsletter-submit {
+    min-height: 48px;
+    min-width: 44px;
+  }
+
+  .instagram-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* --- Horizontal Scroll Mobile --- */
+  .horizontal-scroll-wrapper {
+    height: 40vh;
+  }
+
+  .horizontal-scroll-item {
+    flex: 0 0 75vw;
+  }
+
+  /* --- Tap Targets (Task 11.6) --- */
+  .quick-add-btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px 24px;
+  }
+
+  .fabric-care-toggle {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 10px 0;
+  }
+
+  .logo {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .instagram-cta {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* ========================================
+   Responsive: 320px Narrow Viewport (Task 11.5)
+   ======================================== */
+
+@media (max-width: 320px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-headline {
+    font-size: 2rem;
+  }
+
+  .hero-subheadline {
+    font-size: 0.85rem;
+  }
+
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
