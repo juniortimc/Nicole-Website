@@ -11,6 +11,8 @@
 </head>
 <body>
 
+  <div class="custom-cursor" id="custom-cursor"></div>
+
   <header class="site-header">
     <div class="header-container container">
       <a href="#" class="logo">unwritten</a>
@@ -39,13 +41,13 @@
       </div>
     </section>
 
-    <section id="gallery" class="gallery-section">
+    <section id="gallery" class="gallery-section fade-in-up">
       <div class="container">
         <h2 class="gallery-title">From the Studio to the Field</h2>
         <div class="gallery-filters">
           <button class="gallery-filter is-active" data-filter="all">All</button>
+          <button class="gallery-filter" data-filter="collection">Collection</button>
           <button class="gallery-filter" data-filter="process">The Process</button>
-          <button class="gallery-filter" data-filter="range">The Range</button>
         </div>
         <div class="gallery-grid" id="gallery-grid">
           <!-- Gallery images injected by JS -->
@@ -56,27 +58,30 @@
       </div>
     </section>
 
-    <section id="process" class="process-section">
+    <section id="process" class="process-section fade-in-up">
       <div class="container">
         <h2 class="process-title">The Art of the Stitch</h2>
         <div class="process-grid">
-          <div class="process-tile">
-            <img src="images/process-cad.jpg" alt="Technical drawings and CAD patterns for garment design" loading="lazy">
+          <div class="process-tile parallax-zoom">
+            <img src="assets/Images/studio/264E8922-2CC6-4B0A-88E6-A5E4BE482373_4_5005_c.jpeg" alt="Technical drawings and CAD patterns for garment design" loading="lazy">
+            <div class="process-tile-overlay">Proficient in Adobe Illustrator technical drawings</div>
             <p class="process-tile-caption">Technical Drawings &amp; CAD Patterns</p>
           </div>
-          <div class="process-tile">
-            <img src="images/process-fabric.jpg" alt="Garment construction and fabric preparation" loading="lazy">
+          <div class="process-tile parallax-zoom">
+            <img src="assets/Images/studio/3F3EFC85-EA2D-401E-8A76-18DEE9DA0E98_4_5005_c.jpeg" alt="Garment construction and fabric preparation" loading="lazy">
+            <div class="process-tile-overlay">Hands-on pattern drafting, garment construction &amp; sewing</div>
             <p class="process-tile-caption">Garment Construction &amp; Fabric Preparation</p>
           </div>
-          <div class="process-tile">
-            <img src="images/process-photoshoot.jpg" alt="Photography and photoshoot execution" loading="lazy">
+          <div class="process-tile parallax-zoom">
+            <img src="assets/Images/studio/F4D270D0-15A4-43C9-AD66-2E8416A6D8D8_1_105_c.jpeg" alt="Photography and photoshoot execution" loading="lazy">
+            <div class="process-tile-overlay">Planning &amp; directing photoshoots from concept to final image</div>
             <p class="process-tile-caption">Photography &amp; Photoshoot Execution</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="our-story" class="brand-story-section">
+    <section id="our-story" class="brand-story-section fade-in-up">
       <div class="container">
         <h2 class="brand-story-title">More Than Just a Brand</h2>
         <div class="brand-story-text">
@@ -87,7 +92,7 @@
       </div>
     </section>
 
-    <section id="skills" class="skills-section">
+    <section id="skills" class="skills-section fade-in-up">
       <div class="container">
         <h2 class="skills-title">Technical Proficiency</h2>
         <div class="skills-grid">
@@ -102,7 +107,7 @@
           <div class="skill-badge">Photoshoot Direction</div>
         </div>
         <div class="portfolio-download">
-          <a href="assets/Nicole_Venter_Portfolio.pdf" class="portfolio-btn" download>Download Full Portfolio</a>
+          <a href="assets/Nicole_Venter_Portfolio.pdf" class="portfolio-btn" target="_blank" rel="noopener noreferrer">Download Full Portfolio</a>
         </div>
       </div>
     </section>
@@ -126,13 +131,23 @@
         <p class="footer-contact-item"><a href="tel:+27762251600">+27 76 225 1600</a></p>
       </div>
       <div class="footer-instagram">
-        <div class="instagram-gallery">
-          <img src="images/instagram-1.jpg" alt="Lifestyle image from unwritten" loading="lazy">
-          <img src="images/instagram-2.jpg" alt="Lifestyle image from unwritten" loading="lazy">
-          <img src="images/instagram-3.jpg" alt="Lifestyle image from unwritten" loading="lazy">
-          <img src="images/instagram-4.jpg" alt="Lifestyle image from unwritten" loading="lazy">
+        <h3 class="horizontal-gallery-title">Follow Our Journey</h3>
+        <div class="horizontal-scroll-wrapper" id="horizontal-scroll">
+          <div class="horizontal-scroll-track">
+            <div class="horizontal-scroll-item">
+              <img src="assets/Images/lookbook/A08EF800-67CC-4FC4-AB36-AB502D3A9B3E_1_105_c.jpeg" alt="Lifestyle lookbook shot from unwritten" loading="lazy">
+            </div>
+            <div class="horizontal-scroll-item">
+              <img src="assets/Images/lookbook/BF2FCB71-2A21-46A4-8D5B-47D003B1C3A6.jpeg" alt="Model in handcrafted garment by unwritten" loading="lazy">
+            </div>
+            <div class="horizontal-scroll-item">
+              <img src="assets/Images/lookbook/E4B41311-3695-4512-98A1-C2BD1B7DC601_1_105_c.jpeg" alt="Field photoshoot from unwritten collection" loading="lazy">
+            </div>
+            <div class="horizontal-scroll-item">
+              <img src="assets/Images/lookbook/F3AEF5FC-2C47-4CEB-BB13-78E687C6FBC0.jpeg" alt="Lifestyle portrait from unwritten lookbook" loading="lazy">
+            </div>
+          </div>
         </div>
-        <p class="instagram-cta">Follow our journey</p>
       </div>
       <div class="footer-skills">
         <p class="footer-skills-text">Adobe Illustrator | Pattern Drafting | Garment Construction</p>

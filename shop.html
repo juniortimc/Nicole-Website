@@ -36,6 +36,20 @@
           <h1 class="shop-coming-soon-headline">A Quiet Beginning.</h1>
           <p class="shop-coming-soon-body">Our first collection is currently being handcrafted in our Stellenbosch studio. Sign up to be the first to know when we launch.</p>
           <p class="shop-coming-soon-tag">Coming Soon</p>
+          <div class="sewing-needle-animation" aria-hidden="true">
+            <svg class="needle-svg" viewBox="0 0 300 60" xmlns="http://www.w3.org/2000/svg">
+              <!-- Thread path (sage green, drawn on) -->
+              <path class="thread-path" d="M0,30 C50,10 100,50 150,30 C200,10 250,50 300,30" fill="none" stroke="#98A68E" stroke-width="1" stroke-linecap="round"/>
+              <!-- Needle (charcoal dot that travels the path) -->
+              <circle class="needle-dot" r="2.5" fill="#2C2C2C">
+                <animateMotion dur="8s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+                  <mpath href="#needle-motion-path"/>
+                </animateMotion>
+              </circle>
+              <!-- Hidden path for motion reference -->
+              <path id="needle-motion-path" d="M0,30 C50,10 100,50 150,30 C200,10 250,50 300,30" fill="none" stroke="none"/>
+            </svg>
+          </div>
           <form class="coming-soon-form" aria-label="Pre-launch signup">
             <div class="coming-soon-form-group">
               <input type="email" class="coming-soon-input" placeholder="Your email address" aria-label="Email address" required>

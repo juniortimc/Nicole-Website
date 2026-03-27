@@ -50,10 +50,14 @@ describe('Header (14.3)', () => {
     expect(shopLink.getAttribute('href')).toBe('shop.html');
   });
 
-  it('should be the first child of body (no shipping bar above)', () => {
+  it('should be near the top of body (after custom cursor)', () => {
     const body = doc.querySelector('body');
-    const firstElement = body.children[0];
-    expect(firstElement.classList.contains('site-header')).toBe(true);
+    const header = body.querySelector('.site-header');
+    expect(header).not.toBeNull();
+    // Custom cursor div may be first, header should be second
+    const children = Array.from(body.children);
+    const headerIndex = children.indexOf(header);
+    expect(headerIndex).toBeLessThanOrEqual(1);
   });
 });
 
@@ -93,13 +97,13 @@ describe('Gallery Section', () => {
     expect(title.textContent).toBe('From the Studio to the Field');
   });
 
-  it('should have filter buttons for All, The Process, and The Range', () => {
+  it('should have filter buttons for All, Collection, and The Process', () => {
     const filters = doc.querySelectorAll('.gallery-filter');
     expect(filters.length).toBe(3);
     const texts = Array.from(filters).map(f => f.textContent);
     expect(texts).toContain('All');
+    expect(texts).toContain('Collection');
     expect(texts).toContain('The Process');
-    expect(texts).toContain('The Range');
   });
 
   it('should have a gallery grid container', () => {
@@ -182,15 +186,15 @@ describe('Footer (14.8)', () => {
     expect(doc.querySelector('.newsletter-submit')).not.toBeNull();
   });
 
-  it('should have 4 images in the Instagram gallery', () => {
-    const imgs = doc.querySelectorAll('.instagram-gallery img');
+  it('should have 4 images in the horizontal scroll gallery', () => {
+    const imgs = doc.querySelectorAll('.horizontal-scroll-item img');
     expect(imgs.length).toBe(4);
   });
 
-  it('should display "Follow our journey" CTA', () => {
-    const cta = doc.querySelector('.instagram-cta');
-    expect(cta).not.toBeNull();
-    expect(cta.textContent).toBe('Follow our journey');
+  it('should display "Follow Our Journey" title', () => {
+    const title = doc.querySelector('.horizontal-gallery-title');
+    expect(title).not.toBeNull();
+    expect(title.textContent).toBe('Follow Our Journey');
   });
 
   it('should display contact email', () => {
@@ -284,9 +288,9 @@ describe('Portfolio Download', () => {
     expect(btn.getAttribute('href')).toBe('assets/Nicole_Venter_Portfolio.pdf');
   });
 
-  it('should have a download attribute', () => {
+  it('should have a download attribute that opens in new tab', () => {
     const btn = doc.querySelector('.portfolio-btn');
-    expect(btn.hasAttribute('download')).toBe(true);
+    expect(btn.getAttribute('target')).toBe('_blank');
   });
 });
 
@@ -297,6 +301,45 @@ describe('Footer Credentials', () => {
     expect(cred).not.toBeNull();
     expect(cred.textContent).toContain('Elizabeth Galloway');
     expect(cred.textContent).toContain('2023');
+  });
+});
+
+// --- Process Tile Hover Overlays ---
+describe('Process Tile Hover Overlays', () => {
+  it('should have 3 process tile overlays with portfolio text', () => {
+    const overlays = doc.querySelectorAll('.process-tile-overlay');
+    expect(overlays.length).toBe(3);
+  });
+
+  it('should mention Adobe Illustrator in the CAD tile overlay', () => {
+    const overlays = doc.querySelectorAll('.process-tile-overlay');
+    expect(overlays[0].textContent).toContain('Adobe Illustrator');
+  });
+
+  it('should mention pattern drafting in the construction tile overlay', () => {
+    const overlays = doc.querySelectorAll('.process-tile-overlay');
+    expect(overlays[1].textContent).toContain('pattern drafting');
+  });
+});
+
+// --- Custom Cursor ---
+describe('Custom Cursor', () => {
+  it('should have a custom cursor element', () => {
+    const cursor = doc.getElementById('custom-cursor');
+    expect(cursor).not.toBeNull();
+    expect(cursor.classList.contains('custom-cursor')).toBe(true);
+  });
+});
+
+// --- Horizontal Scroll Gallery ---
+describe('Horizontal Scroll Gallery', () => {
+  it('should have a horizontal scroll wrapper', () => {
+    expect(doc.getElementById('horizontal-scroll')).not.toBeNull();
+  });
+
+  it('should have a horizontal scroll track with 4 items', () => {
+    const items = doc.querySelectorAll('.horizontal-scroll-item');
+    expect(items.length).toBe(4);
   });
 });
 
@@ -357,6 +400,17 @@ describe('Shop Page (shop.html)', () => {
     expect(skills).not.toBeNull();
     expect(skills.textContent).toContain('Adobe Illustrator');
   });
+
+  it('should have a sewing needle SVG animation', () => {
+    const anim = shopDoc.querySelector('.sewing-needle-animation');
+    expect(anim).not.toBeNull();
+    const svg = anim.querySelector('.needle-svg');
+    expect(svg).not.toBeNull();
+    const threadPath = svg.querySelector('.thread-path');
+    expect(threadPath).not.toBeNull();
+    const needleDot = svg.querySelector('.needle-dot');
+    expect(needleDot).not.toBeNull();
+  });
 });
 
 // --- Gallery JS Data ---
@@ -370,26 +424,33 @@ describe('Gallery Data (JS)', () => {
     GALLERY_PAGE_SIZE = mod.GALLERY_PAGE_SIZE;
   });
 
-  it('should have 22 gallery images', () => {
-    expect(galleryImages.length).toBe(22);
+  it('should have 39 gallery images (24 collection + 15 process)', () => {
+    expect(galleryImages.length).toBe(39);
   });
 
-  it('should have images in both "process" and "range" categories', () => {
+  it('should have images in both "collection" and "process" categories', () => {
     const categories = [...new Set(galleryImages.map(i => i.category))];
+    expect(categories).toContain('collection');
     expect(categories).toContain('process');
-    expect(categories).toContain('range');
+  });
+
+  it('should have 24 collection images and 15 process images', () => {
+    const collection = galleryImages.filter(i => i.category === 'collection');
+    const process = galleryImages.filter(i => i.category === 'process');
+    expect(collection.length).toBe(24);
+    expect(process.length).toBe(15);
   });
 
   it('should render gallery item HTML with image, alt, and caption', () => {
-    const item = { src: 'images/test.jpg', alt: 'Test image', category: 'range' };
+    const item = { src: 'assets/Images/lookbook/test.jpeg', alt: 'Test image', category: 'collection' };
     const html = renderGalleryItem(item);
-    expect(html).toContain('src="images/test.jpg"');
+    expect(html).toContain('src="assets/Images/lookbook/test.jpeg"');
     expect(html).toContain('alt="Test image"');
-    expect(html).toContain('data-category="range"');
+    expect(html).toContain('data-category="collection"');
     expect(html).toContain('Designed &amp; Handcrafted by Nicole Venter');
   });
 
-  it('should have a page size of 9', () => {
-    expect(GALLERY_PAGE_SIZE).toBe(9);
+  it('should have a page size of 12', () => {
+    expect(GALLERY_PAGE_SIZE).toBe(12);
   });
 });

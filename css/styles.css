@@ -805,6 +805,31 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-charcoal);
 }
 
+/* Process Tile Hover Overlay */
+.process-tile-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  background: rgba(152, 166, 142, 0.85);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+}
+
+.process-tile:hover .process-tile-overlay {
+  opacity: 1;
+}
+
 /* Process Section responsive — see consolidated 768px breakpoint below */
 
 /* ========================================
@@ -1193,6 +1218,151 @@ h1, h2, h3, h4, h5, h6 {
    Mobile Menu Toggle (Task 11.2)
    ======================================== */
 
+/* ========================================
+   Custom Cursor
+   ======================================== */
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid var(--color-charcoal);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 300ms ease, height 300ms ease, border-color 300ms ease, margin 300ms ease;
+  margin-left: -14px;
+  margin-top: -14px;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.is-expanded {
+  width: 52px;
+  height: 52px;
+  border-color: var(--color-sage);
+  margin-left: -26px;
+  margin-top: -26px;
+}
+
+body.has-custom-cursor {
+  cursor: none;
+}
+
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor input {
+  cursor: none;
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) {
+  .custom-cursor { display: none; }
+  body.has-custom-cursor { cursor: auto; }
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor input { cursor: auto; }
+}
+
+/* ========================================
+   Horizontal Scroll Gallery (Follow Our Journey)
+   ======================================== */
+
+.horizontal-gallery-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.horizontal-scroll-wrapper {
+  position: relative;
+  height: 60vh;
+  overflow: hidden;
+}
+
+.horizontal-scroll-track {
+  display: flex;
+  gap: var(--grid-gap);
+  height: 100%;
+  will-change: transform;
+}
+
+.horizontal-scroll-item {
+  flex: 0 0 40vw;
+  height: 100%;
+  overflow: hidden;
+}
+
+.horizontal-scroll-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ========================================
+   Sewing Needle SVG Animation (Shop Page)
+   ======================================== */
+
+.sewing-needle-animation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 24px auto 32px;
+  max-width: 300px;
+}
+
+.needle-svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Thread draws itself in over 8s */
+.thread-path {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: draw-thread 8s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes draw-thread {
+  0% { stroke-dashoffset: 400; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* ========================================
+   Scroll Animations
+   ======================================== */
+
+/* Fade-in-up entrance animation */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Parallax zoom on gallery/process images */
+.parallax-zoom {
+  overflow: hidden;
+}
+
+.parallax-zoom img {
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+
+/* ========================================
+   Mobile Menu Toggle
+   ======================================== */
+
 .mobile-menu-toggle {
   display: none;
   background: none;
@@ -1403,6 +1573,15 @@ body {
 
   .instagram-gallery {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* --- Horizontal Scroll Mobile --- */
+  .horizontal-scroll-wrapper {
+    height: 40vh;
+  }
+
+  .horizontal-scroll-item {
+    flex: 0 0 75vw;
   }
 
   /* --- Tap Targets (Task 11.6) --- */
