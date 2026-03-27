@@ -176,12 +176,35 @@ if (typeof document !== 'undefined') {
         visibleCount = 0;
         if (galleryGrid) galleryGrid.innerHTML = '';
       }
+      // Save scroll position before injecting
+      var scrollY = window.scrollY;
       var end = Math.min(visibleCount + GALLERY_PAGE_SIZE, filtered.length);
       var html = '';
       for (var i = visibleCount; i < end; i++) {
         html += renderGalleryItem(filtered[i]);
       }
       if (galleryGrid) galleryGrid.innerHTML += html;
+      // Restore scroll position after injection (prevents jump)
+      if (!reset) window.scrollTo(0, scrollY);
+
+      // Staggered reveal: when each image loads, add is-loaded with a delay
+      var newItems = galleryGrid ? galleryGrid.querySelectorAll('.gallery-item:not(.is-loaded)') : [];
+      newItems.forEach(function (item, idx) {
+        var img = item.querySelector('img');
+        if (!img) return;
+        var reveal = function () {
+          setTimeout(function () {
+            item.classList.add('is-loaded');
+          }, idx * 80); // 80ms stagger between each
+        };
+        if (img.complete && img.naturalHeight > 0) {
+          reveal();
+        } else {
+          img.addEventListener('load', reveal);
+          img.addEventListener('error', reveal); // still reveal on error
+        }
+      });
+
       visibleCount = end;
       if (loadMoreBtn) {
         if (visibleCount >= filtered.length) {
